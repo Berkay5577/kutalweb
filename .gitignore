@@ -1,0 +1,4 @@
+# 3D model dosyaları (GitHub boyut limitini aşıyor)
+3d_assets/
+*.STL
+*.stl
