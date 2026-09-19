@@ -303,7 +303,7 @@ window.KUTAL_PRODUCTS = [
     p.gallery = [p.img].concat((g[p.slug] || []).map((f) => GP + f));
   });
   // şeffaf görseller için önbellek kırıcı
-  const Q = "?t9";
+  const Q = "?t10";
   (window.KUTAL_PRODUCTS || []).forEach((p) => {
     p.img += Q;
     if (p.gallery) p.gallery = p.gallery.map((s) => s + Q);
