@@ -101,31 +101,33 @@
      fg olmadan da çalışır (yalnız arka plan).                                */
   const SLIDES = [
     {
-      bg: "images/prlx_soldier_background_1.webp",
-      fg: "images/prlx_soldier_1.webp",
-      eyebrow: "Türk Savunma Sanayii",
+      bg: "images/hero_p556_bg.webp",
+      fg: "images/hero_p556_fg.webp",
+      anchor: "right",
+      eyebrow: "Piyade Tüfeği · KTL P556",
       title: 'SAHADA<br><span class="stroke">KANITLANMIŞ</span> GÜÇ',
-      lead: "Kutal Savunma, güvenlik güçlerinin yanında. Tabancadan piyade tüfeğine uzanan ürün gamıyla; zorlu saha koşullarında test edilmiş, güvenilir silah sistemleri.",
+      lead: "KTL P556; kısa stroklu gaz pistonlu, modüler ve ergonomik piyade tüfeğiyle yakın ve uzun menzilli görevlerde üstün performans sunar.",
       actions: [
-        { label: "Ürünleri Keşfet", href: "urunler.html", gold: true },
-        { label: "İletişime Geç", href: "iletisim.html", gold: false },
+        { label: "KTL P556'yı İncele", href: "urun.html?p=p556", gold: true },
+        { label: "Ürünleri Keşfet", href: "urunler.html", gold: false },
       ],
     },
     {
-      bg: "images/prlx_soldier_background_2.webp",
-      fg: "images/prlx_soldier_2.webp",
-      eyebrow: "Makinalı Tabancalar",
-      title: 'YAKIN MUHAREBEDE<br><span class="stroke">TAM</span> KONTROL',
-      lead: "KTL S9; gecikmeli geri tepme sistemi, yüksek atış hızı ve seçici ateşleme moduyla yakın muharebe için üstün kontrol sağlar.",
+      bg: "images/hero_fsb762pl_bg.webp",
+      fg: "images/hero_fsb762pl_fg.webp",
+      anchor: "left",
+      eyebrow: "Makinalı Tabanca · FSB 762 PL",
+      title: 'KOMPAKT<br><span class="stroke">YÜKSEK</span> ATEŞ GÜCÜ',
+      lead: "FSB 762 PL; 7.62×25 mm kalibreli, kompakt gövdesi ve yüksek atış kontrolüyle yakın muharebe için ideal makinalı tabanca.",
       actions: [
-        { label: "KTL S9'u İncele", href: "urun.html?p=s9", gold: true },
+        { label: "FSB 762 PL'yi İncele", href: "urun.html?p=fsb762-pl", gold: true },
         { label: "Tüm Ürünler", href: "urunler.html", gold: false },
       ],
     },
     {
-      bg: "images/prlx_soldier_background_3.webp",
-      fg: "images/prlx_soldier_3.webp",
-      eyebrow: "Bombaatar Sistemleri",
+      bg: "images/hero_b40_bg.webp",
+      fg: "images/hero_b40_fg.webp",
+      eyebrow: "Bombaatar · KTL B40",
       title: 'YÜKSEK VE<br><span class="stroke">ETKİLİ</span> ATIŞ GÜCÜ',
       lead: "KTL B40; döner tamburlu pompalama sistemi ve 40 mm çapıyla sahada sürekli ve güvenilir atış gücü sunar.",
       actions: [
@@ -134,14 +136,25 @@
       ],
     },
     {
-      bg: "images/prlx_soldier_background_4.webp",
-      fg: "images/prlx_soldier_4.webp",
-      eyebrow: "Tedarik & Temin",
-      title: 'SAHAYA<br><span class="stroke">KESİNTİSİZ</span> TEDARİK',
-      lead: "Piyade tüfeklerinden havanlara, keskin nişancı sistemlerinden makinalı tüfeklere; güvenlik güçlerinin ihtiyaçlarına uçtan uca tedarik çözümleri.",
+      bg: "images/hero_s9_bg.webp",
+      fg: "images/hero_s9_fg.webp",
+      eyebrow: "Makinalı Tabanca · KTL S9",
+      title: 'YAKIN MUHAREBEDE<br><span class="stroke">TAM</span> KONTROL',
+      lead: "KTL S9; gecikmeli geri tepme sistemi, yüksek atış hızı ve seçici ateşleme moduyla yakın muharebe için üstün kontrol sağlar.",
       actions: [
-        { label: "Tedariklerimiz", href: "tedarik.html", gold: true },
-        { label: "Kurumsal", href: "hakkinda.html", gold: false },
+        { label: "KTL S9'u İncele", href: "urun.html?p=s9", gold: true },
+        { label: "Tüm Ürünler", href: "urunler.html", gold: false },
+      ],
+    },
+    {
+      bg: "images/hero_p9_bg.webp",
+      fg: "images/hero_p9_fg.webp",
+      eyebrow: "Tabanca · P9",
+      title: 'GÜVENİLİR<br><span class="stroke">HİZMET</span> TABANCASI',
+      lead: "P9; 9×19 mm NATO kalibreli, 17+1 kapasiteli polimer çerçeveli hizmet tabancası. Picatinny ray ve çoklu renk seçenekleriyle profesyonel kullanıma yönelik.",
+      actions: [
+        { label: "P9'u İncele", href: "urun.html?p=p9", gold: true },
+        { label: "Ürünleri Keşfet", href: "urunler.html", gold: false },
       ],
     },
   ];
@@ -155,11 +168,11 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
     slider.innerHTML = SLIDES.map((s, i) => `
-      <div class="slide${i === 0 ? " is-active" : ""}" data-i="${i}">
+      <div class="slide${i === 0 ? " is-active" : ""}" data-i="${i}"${s.anchor ? ` data-anchor="${s.anchor}"` : ""}>
         <div class="slide-stage">
           <div class="slide-bg" style="background-image:url('${s.bg}')"></div>
           <div class="slide-scrim"></div>
-          ${s.fg ? `<img class="slide-fg" src="${s.fg}" alt="" draggable="false" />` : ""}
+          ${s.fg ? `<div class="slide-fg-wrap"><img class="slide-fg" src="${s.fg}" alt="" draggable="false"${s.fgPos ? ` style="object-position:${s.fgPos}"` : ""} /></div>` : ""}
         </div>
         <div class="slide-vig"></div>
         <div class="hero-content"><div class="container">
@@ -216,14 +229,27 @@
       });
     }
     const ploop = () => {
-      cx += (tx - cx) * 0.07;
-      cy += (ty - cy) * 0.07;
-      const sc = Math.min(Math.max(window.scrollY / (hero.offsetHeight || 1), 0), 1);
+      cx += (tx - cx) * 0.06;
+      cy += (ty - cy) * 0.06;
+      const sy = window.scrollY || document.documentElement.scrollTop || 0;
+      const sc = Math.min(Math.max(sy / (hero.offsetHeight || 1), 0), 1);
       const active = slides[idx];
       if (active) {
-        const fg = active.querySelector(".slide-fg");
-        // askerler (ön plan) fareyle belirgin kayar; arka plan sabit kalır -> derinlik
-        if (fg) fg.style.transform = `translate3d(${-cx * 38}px, ${-cy * 24 + sc * 55}px, 0)`;
+        const bg = active.querySelector(".slide-bg");
+        const fg = active.querySelector(".slide-fg-wrap");
+        // kenara sabit slaytlar (P556/FSB): yatay parallax yok; asker sabit bir miktar
+        // kenara doğru kaydırılır (P556 sağa, FSB sola) -> data-shift oranı ile ayarlanır
+        const anchor = active.dataset.anchor;
+        const shiftR = parseFloat(active.dataset.shift || "0.06");
+        const shift = window.innerWidth * shiftR;
+        const bgX = anchor ? 0 : cx * -7;
+        const fgX = anchor ? (anchor === "right" ? shift : -shift) : cx * 18;
+        // arka plan: dinlenmede scale 1.0 (doğal/keskin), fare/scroll'da çok hafif derinlik
+        if (bg) bg.style.transform =
+          `scale(${(1 + sc * 0.04).toFixed(3)}) translate3d(${bgX.toFixed(1)}px, ${(sc * 8).toFixed(1)}px, 0)`;
+        // ön plan (asker): fare + scroll ile hareket eder; ölçek 1.0 (kalite korunur)
+        if (fg) fg.style.transform =
+          `translate3d(${fgX.toFixed(1)}px, ${(cy * 12 + sc * 30).toFixed(1)}px, 0)`;
       }
       requestAnimationFrame(ploop);
     };
@@ -237,11 +263,13 @@
     const sticky = canvas.parentElement;
     const section = document.getElementById("reel");
     const hint = document.getElementById("reel-hint");
+    const tint = document.getElementById("reel-tint");
+    const feats = Array.from(document.querySelectorAll("#reel-feats .reel-feat"));
     const ctx = canvas.getContext("2d");
     const N = 121, frames = new Array(N);
 
     /* scroll boyunca beliren ürün kartları */
-    const FEATURED = ["fsb762", "s9", "s9-plus", "b40", "p9"];
+    const FEATURED = ["fsb762", "s9", "s9-plus", "p9", "b40"];
     const cardsWrap = document.getElementById("reel-cards");
     let caps = [];
     if (cardsWrap && window.KUTAL_PRODUCTS) {
@@ -276,7 +304,7 @@
           const b = card.getBoundingClientRect();
           const px = (e.clientX - b.left) / b.width - 0.5;
           const py = (e.clientY - b.top) / b.height - 0.5;
-          inner.style.transform = `rotateY(${-5 + px * 12}deg) rotateX(${-py * 12}deg)`;
+          inner.style.transform = `rotateY(${5 + px * 12}deg) rotateX(${-py * 12}deg)`;
         });
         sec.addEventListener("mouseleave", () => {
           cardsWrap.querySelectorAll(".reel-card-inner").forEach((el) => (el.style.transform = ""));
@@ -284,7 +312,7 @@
       }
     }
     const pad = (n) => String(n).padStart(3, "0");
-    for (let i = 0; i < N; i++) { const im = new Image(); im.src = "images/seq/f" + pad(i + 1) + ".webp?t3"; frames[i] = im; }
+    for (let i = 0; i < N; i++) { const im = new Image(); im.src = "images/seq/f" + pad(i + 1) + ".webp?t5"; frames[i] = im; }
     let cw = 0, ch = 0, dpr = 1, cur = -1, targetIdx = 0;
 
     const drawFrame = (im) => {
@@ -293,7 +321,8 @@
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = "high";
       ctx.clearRect(0, 0, cw, ch);
-      const s = Math.min(cw / im.naturalWidth, ch / im.naturalHeight) * 1.06;
+      // "cover": kanvasi tamamen doldur (yanlarda/altta bosluk kalmasin), tasani kirp
+      const s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight) * 1.02;
       const w = im.naturalWidth * s, h = im.naturalHeight * s;
       ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
       return true;
@@ -321,7 +350,10 @@
       const p = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0;
       targetIdx = Math.round(p * (N - 1));
       render();
+      // scroll ilerledikce blur azalir (siyah tint kalir)
+      if (tint) tint.style.setProperty("--reel-blur", (16 * Math.max(0, 1 - p * 1.6)).toFixed(1) + "px");
       caps.forEach((c) => c.classList.toggle("on", p >= +c.dataset.in && p < +c.dataset.out));
+      feats.forEach((f) => f.classList.toggle("on", p >= +f.dataset.in && p < +f.dataset.out));
       if (hint) hint.classList.toggle("hide", p > 0.04);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -339,11 +371,11 @@
     const caps = Array.from(section.querySelectorAll(".reel2-cap"));
     const dotsWrap = document.getElementById("reel2-dots");
     const ctx = canvas.getContext("2d");
-    const SEQ = [{ d: "1", n: 61 }, { d: "2", n: 49 }, { d: "3", n: 61 }, { d: "4", n: 61 }];
+    const SEQ = [{ d: "1", n: 61 }, { d: "2", n: 61 }, { d: "3", n: 61 }, { d: "4", n: 61 }];
     const pad = (n) => String(n).padStart(3, "0");
     SEQ.forEach((s) => {
       s.frames = new Array(s.n);
-      for (let i = 0; i < s.n; i++) { const im = new Image(); im.src = "images/reel2/" + s.d + "/f" + pad(i + 1) + ".webp?t1"; s.frames[i] = im; }
+      for (let i = 0; i < s.n; i++) { const im = new Image(); im.src = "images/reel2/" + s.d + "/f" + pad(i + 1) + ".webp?t2"; s.frames[i] = im; }
     });
     if (dotsWrap) dotsWrap.innerHTML = SEQ.map((_, i) => `<span class="rd${i === 0 ? " on" : ""}"></span>`).join("");
     const dots = dotsWrap ? Array.from(dotsWrap.children) : [];
@@ -362,10 +394,21 @@
       if (!im) return false;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
-      ctx.clearRect(0, 0, cw, ch);
-      const s = Math.min(cw / im.naturalWidth, ch / im.naturalHeight) * 1.12;
-      const w = im.naturalWidth * s, h = im.naturalHeight * s;
-      ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
+      const iw = im.naturalWidth, ih = im.naturalHeight;
+      const s = Math.min(cw / iw, ch / ih) * 0.9;
+      const w = iw * s, h = ih * s;
+      const dx = (cw - w) / 2, dy = (ch - h) / 2;
+      const rx = cw - (dx + w), by = ch - (dy + h);
+      // kenar piksellerini dışa uzatarak boşlukları doldur (4 kenarda da çizgi olmasın)
+      ctx.drawImage(im, 0, 0, 1, 1, 0, 0, dx, dy);                 // sol-üst köşe
+      ctx.drawImage(im, iw - 1, 0, 1, 1, dx + w, 0, rx, dy);       // sağ-üst köşe
+      ctx.drawImage(im, 0, ih - 1, 1, 1, 0, dy + h, dx, by);       // sol-alt köşe
+      ctx.drawImage(im, iw - 1, ih - 1, 1, 1, dx + w, dy + h, rx, by); // sağ-alt köşe
+      ctx.drawImage(im, 0, 0, iw, 1, dx, 0, w, dy);                // üst kenar
+      ctx.drawImage(im, 0, ih - 1, iw, 1, dx, dy + h, w, by);      // alt kenar
+      ctx.drawImage(im, 0, 0, 1, ih, 0, dy, dx, h);               // sol kenar
+      ctx.drawImage(im, iw - 1, 0, 1, ih, dx + w, dy, rx, h);      // sağ kenar
+      ctx.drawImage(im, dx, dy, w, h);                             // ana görsel
       return true;
     };
     const resize = () => {

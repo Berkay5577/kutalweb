@@ -10,7 +10,11 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Expires", "0")
         super().end_headers()
 
-socketserver.TCPServer.allow_reuse_address = True
-with socketserver.TCPServer(("", PORT), NoCacheHandler) as httpd:
+class ThreadedServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    # Ağır 3D/video varlıklarını paralel sunabilmek için çok iş parçacıklı
+    daemon_threads = True
+    allow_reuse_address = True
+
+with ThreadedServer(("", PORT), NoCacheHandler) as httpd:
     print(f"No-cache dev server on http://localhost:{PORT}")
     httpd.serve_forever()

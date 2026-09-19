@@ -67,13 +67,28 @@
 <section class="reel light" id="reel">
   <div class="reel-sticky">
     <canvas id="reel-canvas"></canvas>
+    <div class="reel-tint" id="reel-tint"></div>
+    <div class="reel-fade" aria-hidden="true"></div>
     <div class="reel-caps">
-      <div class="reel-head">
-        <span class="eyebrow">Ürün Ailesi</span>
-        <h2>Silahlarımızı<br><span class="gold">Keşfedin</span></h2>
-        <p>Aşağı kaydırdıkça öne çıkan modellerimizi inceleyin.</p>
+      <div class="reel-feats" id="reel-feats">
+        <div class="reel-feat" data-in="0" data-out="0.2"><span class="rf-idx">01</span>
+          <h4>Döner Tamburlu Sistem</h4><p>Pompalamalı döner tamburuyla hızlı, sürekli ve kesintisiz atış imkânı.</p></div>
+        <div class="reel-feat" data-in="0.2" data-out="0.4"><span class="rf-idx">02</span>
+          <h4>40 mm Atış Gücü</h4><p>37-38/40 mm mühimmatla sahada yüksek ve etkili atış üstünlüğü.</p></div>
+        <div class="reel-feat" data-in="0.4" data-out="0.6"><span class="rf-idx">03</span>
+          <h4>4 Atış Kapasitesi</h4><p>Manuel beslemeli tambur; birimlere kesintisiz destek ateşi sağlar.</p></div>
+        <div class="reel-feat" data-in="0.6" data-out="0.8"><span class="rf-idx">04</span>
+          <h4>Teleskopik Dipçik</h4><p>2 pozisyon ayarlanabilir dipçik ile ergonomik ve dengeli kullanım.</p></div>
+        <div class="reel-feat" data-in="0.8" data-out="1.01"><span class="rf-idx">05</span>
+          <h4>100–400 m Menzil</h4><p>Ayarlanabilir nişangahıyla geniş etkili menzilde hassas atış.</p></div>
       </div>
-      <div class="reel-cards" id="reel-cards"><!-- kartlar JS ile (main.js -> REEL_FEATURED) --></div>
+      <div class="reel-ad" id="reel-ad">
+        <span class="reel-ad-tag">Bombaatar · B40</span>
+        <h3 class="reel-ad-title">Sahada Kesintisiz <span class="grad">Güç</span></h3>
+        <p class="reel-ad-sub">Döner tamburlu 40 mm bombaatar — sürekli ve etkili atış üstünlüğü.</p>
+        <a href="urun.html?p=b40" class="reel-ad-cta"><span>B40'ı İncele</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
     </div>
     <div class="reel-hint" id="reel-hint"><span>KAYDIRIN</span><span class="a">↓</span></div>
   </div>
@@ -102,11 +117,11 @@
         <p>Yakın muharebe için seçici ateşli, yüksek kontrollü platformlar.</p>
         <span class="more">İncele →</span>
       </a>
-      <a class="prod-card reveal d2" href="urunler.html#hafif-makinali-tufekler" style="background-image:url('images/card_bg_3.webp')">
+      <a class="prod-card reveal d2" href="urunler.html#piyade-tufekleri" style="background-image:url('images/card_bg_3.webp')">
         <span class="idx">03</span>
         <svg class="pico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 20h30l6 6v6H14l-8-6z"/><path d="M14 32v6h8v-6"/><path d="M34 20v-6h6"/></svg>
-        <h3>Hafif Makinalı Tüfekler</h3>
-        <p>Teleskopik dipçikli, çok namlu seçenekli çok yönlü sistemler.</p>
+        <h3>Piyade Tüfekleri</h3>
+        <p>Farklı kalibrelerde modern ve güvenilir yerli üretim piyade tüfekleri.</p>
         <span class="more">İncele →</span>
       </a>
       <a class="prod-card reveal" href="urunler.html#bombaatar" style="background-image:url('images/card_bg_4.webp')">
@@ -116,11 +131,11 @@
         <p>40 mm NATO standardında tekli ve döner tamburlu bombaatarlar.</p>
         <span class="more">İncele →</span>
       </a>
-      <a class="prod-card reveal d1" href="urunler.html#drone" style="background-image:url('images/card_bg_5.webp')">
+      <a class="prod-card reveal d1" href="urunler.html#anti-riotlar" style="background-image:url('images/card_bg_5.webp')">
         <span class="idx">05</span>
-        <svg class="pico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="24" r="6"/><path d="M24 18V8M24 30v10M18 24H8M30 24h10"/><circle cx="8" cy="8" r="3"/><circle cx="40" cy="8" r="3"/><circle cx="8" cy="40" r="3"/><circle cx="40" cy="40" r="3"/></svg>
-        <h3>Sivil Drone Sistemleri</h3>
-        <p>Sivil kullanım için geliştirilen insansız hava sistemleri. Yakında.</p>
+        <svg class="pico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 6l14 6v9c0 8-6 14-14 17-8-3-14-9-14-17v-9z"/><path d="M17 24l5 5 9-10"/></svg>
+        <h3>Anti-Riotlar</h3>
+        <p>Toplumsal olaylara müdahale için 37-38/40 mm gaz ve anti-riot atıcı sistemleri.</p>
         <span class="more">İncele →</span>
       </a>
       <a class="prod-card reveal d2" href="tedarik.html" style="background-image:url('images/card_bg_6.webp')">
@@ -165,6 +180,8 @@
 <section class="reel reel2 light" id="reel2">
   <div class="reel-sticky">
     <canvas id="reel2-canvas"></canvas>
+    <div class="reel2-tint" aria-hidden="true"></div>
+    <div class="reel-fade" aria-hidden="true"></div>
     <div class="reel-caps">
       <div class="reel2-cap on" data-seg="0"><span class="rc2-idx">01</span>
         <span class="eyebrow">Bileşen Mimarisi</span>

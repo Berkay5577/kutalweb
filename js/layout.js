@@ -15,6 +15,16 @@
   const caret = '<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>';
   const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   const searchIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
+
+  // Dil seçici — ülke bayrakları (inline SVG; her platformda güvenilir şekilde görünür)
+  const FLAGS = {
+    tr: '<svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#E30A17"/><circle cx="8" cy="7" r="3.1" fill="#fff"/><circle cx="9" cy="7" r="2.5" fill="#E30A17"/><polygon fill="#fff" points="12,5.3 12.41,6.43 13.62,6.47 12.67,7.22 13,8.38 12,7.7 11,8.38 11.33,7.22 10.38,6.47 11.59,6.43"/></svg>',
+    en: '<svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0l20 14M20 0L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0l20 14M20 0L0 14" stroke="#C8102E" stroke-width="1.4"/><path d="M10 0v14M0 7h20" stroke="#fff" stroke-width="4"/><path d="M10 0v14M0 7h20" stroke="#C8102E" stroke-width="2.2"/></svg>',
+    ru: '<svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><rect y="4.67" width="20" height="4.67" fill="#0039A6"/><rect y="9.33" width="20" height="4.67" fill="#D52B1E"/></svg>',
+    ar: '<svg class="flag" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#006C35"/><rect x="3" y="8.9" width="14" height=".85" rx=".42" fill="#fff"/><g fill="#fff"><rect x="4.2" y="5.2" width="1.4" height="1.9" rx=".3"/><rect x="6.2" y="5.2" width="1.4" height="1.9" rx=".3"/><rect x="8.2" y="5.2" width="1.4" height="1.9" rx=".3"/><rect x="10.2" y="5.2" width="1.4" height="1.9" rx=".3"/><rect x="12.2" y="5.2" width="1.4" height="1.9" rx=".3"/></g></svg>',
+  };
+  const langBtn = (code, label, on) => `<button type="button" data-lang="${code}" class="lang-btn${on ? " on" : ""}" aria-label="${label}">${FLAGS[code]}<span>${label}</span></button>`;
+  const langHTML = () => langBtn("tr", "TR", true) + langBtn("en", "EN") + langBtn("ru", "RU") + langBtn("ar", "AR");
   // Sosyal medya adresleri — gerçek hesap adreslerinizle güncelleyin
   const SOCIAL = {
     ig: "https://www.instagram.com/kutalarms",
@@ -42,7 +52,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>${EMAIL}</a>
         </div>
         <div class="topbar-right">
-          <span class="lang"><button type="button" data-lang="tr" class="on">TR</button><b>|</b><button type="button" data-lang="en">EN</button><b>|</b><button type="button" data-lang="ru">RU</button><b>|</b><button type="button" data-lang="ar">AR</button></span>
+          <span class="lang">${langHTML()}</span>
           <span class="tb-sep"></span>
           <div class="tb-social">${socLinks()}</div>
         </div>
@@ -67,9 +77,9 @@
             <div class="sub">
               <a href="urunler.html#tabancalar">Tabancalar</a>
               <a href="urunler.html#makinali-tabancalar">Makinalı Tabancalar</a>
-              <a href="urunler.html#hafif-makinali-tufekler">Hafif Makinalı Tüfekler</a>
-              <a href="urunler.html#bombaatar">Bombaatar</a>
-              <a href="urunler.html#drone">Sivil Drone Sistemleri</a>
+              <a href="urunler.html#piyade-tufekleri">Piyade Tüfekleri</a>
+              <a href="urunler.html#bombaatar">Bombaatarlar</a>
+              <a href="urunler.html#anti-riotlar">Anti-Riotlar</a>
             </div>
           </div>
           <div class="nav-item">
@@ -83,7 +93,7 @@
           </div>
           <a href="haberler.html" class="${act("news").trim()}">Haberler</a>
           <a href="iletisim.html" class="${act("contact").trim()}">İletişim</a>
-          <span class="lang lang-m"><button type="button" data-lang="tr" class="on">TR</button><b>|</b><button type="button" data-lang="en">EN</button><b>|</b><button type="button" data-lang="ru">RU</button><b>|</b><button type="button" data-lang="ar">AR</button></span>
+          <span class="lang lang-m">${langHTML()}</span>
         </nav>
         <div class="nav-cta">
           <button class="nav-search" id="nav-search" aria-label="Ara">${searchIco}</button>
@@ -114,8 +124,9 @@
           <h4>Ürünler</h4>
           <a href="urunler.html#tabancalar">Tabancalar</a>
           <a href="urunler.html#makinali-tabancalar">Makinalı Tabancalar</a>
-          <a href="urunler.html#hafif-makinali-tufekler">Hafif Makinalı Tüfekler</a>
-          <a href="urunler.html#bombaatar">Bombaatar</a>
+          <a href="urunler.html#piyade-tufekleri">Piyade Tüfekleri</a>
+          <a href="urunler.html#bombaatar">Bombaatarlar</a>
+          <a href="urunler.html#anti-riotlar">Anti-Riotlar</a>
           <a href="tedarik.html">Tedariklerimiz</a>
         </div>
         <div class="foot-col">

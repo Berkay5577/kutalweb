@@ -10,7 +10,8 @@
 
   function card(p) {
     return `
-      <a class="pcard reveal" href="urun.html?p=${encodeURIComponent(p.slug)}">
+      <a class="pcard reveal${p.soon ? " is-soon" : ""}" href="urun.html?p=${encodeURIComponent(p.slug)}">
+        ${p.soon ? '<span class="pc-soon">Çok Yakında</span>' : ""}
         ${p.model ? '<span class="pc3d">3D</span>' : ""}
         <div class="pcard-img"><img src="${p.img}" alt="${esc(p.name)}" loading="lazy" /></div>
         <div class="pcard-body">
@@ -72,7 +73,7 @@
 
   /* -------- CATALOG (urunler.html) — sol filtre paneli -------- */
   const catalog = document.getElementById("catalog");
-  if (catalog) buildShop(catalog, P.filter((p) => C.some((c) => c.key === p.cat)), { catList: C });
+  if (catalog) buildShop(catalog, P.filter((p) => !p.supply && C.some((c) => c.key === p.cat)), { catList: C });
 
   /* ürün ızgarası + sol filtre (kategori · kalibre · tip) */
   function buildShop(root, ITEMS, opts) {
@@ -152,13 +153,22 @@
     toggle.addEventListener("click", () => setDrawer(!sideEl.classList.contains("open")));
     closeBtn.addEventListener("click", () => setDrawer(false));
 
-    const hk = location.hash.slice(1);
-    if (hk && catList.some((c) => c.key === hk)) {
+    const applyHashCat = (scroll) => {
+      const hk = location.hash.slice(1);
+      if (!hk || !catList.some((c) => c.key === hk)) return false;
+      // sadece seçilen kategoriyi göster: önceki kategori seçimlerini temizle
+      state.cat.clear();
+      root.querySelectorAll('input[data-f="cat"]').forEach((i) => (i.checked = false));
       state.cat.add(hk);
       const inp = root.querySelector(`input[data-f="cat"][value="${CSS.escape(hk)}"]`);
       if (inp) inp.checked = true;
-    }
-    render();
+      render();
+      if (scroll) root.scrollIntoView({ behavior: "smooth", block: "start" });
+      return true;
+    };
+    // Aynı sayfadayken üst menüden kategori seçilince (yalnızca hash değişir) filtreyi uygula
+    window.addEventListener("hashchange", () => applyHashCat(true));
+    if (!applyHashCat(false)) render();
   }
 
   /* -------- SUPPLY (tedarik.html) — ürünler sayfasıyla aynı sol filtre -------- */
